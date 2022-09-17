@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+
+  <script type="text/javascript">
+  function valid()
+  {
+    if(document.getElementById("connum1").value=="")
+    {
+      alert("Invalid Consumer Number")
+      document.getElementById("connum1").focus;
+      return false;
+    }
+    if(document.getElementById("conname1").value=="")
+	{
+		alert("Enter Name!");
+		document.getElementById("conname1").focus();
+    	return false;
+ 	}
+	if(/[^a-z\s]/gi.test(document.getElementById("conname1").value))
+	{
+		alert("Special characters are not allowed in name");
+		document.getElementById("conname1").focus();
+		return false;
+	}
+	 if(document.getElementById("ration1").value=="")
+    {
+      alert("Invalid Ration Card Number")
+      document.getElementById("ration1").focus;
+      return false;
+    }
+    if(document.getElementById("email1").value=="")
+	{
+		alert("Enter your E-mail ID");
+		document.getElementById("email1").focus();
+		return false;
+	}
+	var emailPat =/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+	var emailid=document.getElementById("email1").value;
+	var matchArray = emailid.match(emailPat);
+	if (matchArray == null)
+	{
+		alert("Your Email ID seems incorrect. Enter Correct Email ID.");
+		document.getElementById("email1").focus();
+		return false;
+	}
+	if(document.getElementById("address1").value=="")
+	{
+		alert("Enter Address!");
+		document.getElementById("address1").focus();
+    	return false;
+ 	}
+ 	if(document.getElementById("phone1").value=="")
+   	{
+     	alert("Enter Phone Number!");
+     	document.getElementById("phone1").focus();
+     	return false;
+ 	}
+	if(/[^0-9]/gi.test(document.getElementById("phone1").value))
+	{
+		alert("Special characters not allowed in Phone Number");
+		document.getElementById("phone1").focus();
+		return false;
+	}
+	if(document.getElementById("photo1").value=="")
+    {
+      alert("Invalid Photo")
+      document.getElementById("photo1").focus;
+      return false;
+    }
+    if(document.getElementById("locality1").value=="-1")
+	{
+		alert("Select Locality!");
+		document.getElementById("locality1").focus();
+    	return false;
+ 	}
+ 	 if(document.getElementById("ward1").value=="-1")
+	{
+		alert("Select Ward!");
+		document.getElementById("ward1").focus();
+    	return false;
+ 	}
+ 	if(document.getElementById("pwd").value=="")
+	{
+		alert("Enter Password!");
+		document.getElementById("pwd").focus();
+    	return false;
+ 	}
+  }
+
+</script>
+
+</head>
+
+<body>
+<form action="/update_consumer" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table width="351" border="0" align="center">
+     <input type="hidden" name="id" value="{{z['consumer_id']}}" id="id">
+    <tr>
+      <td width="121">Consumer number</td>
+      <td width="214"><input type="text" value="{{z['consumer_no']}}" name="connum1" id="connum1" /></td>
+    </tr>
+    <tr>
+      <td>Consumer name</td>
+      <td><input type="text" value="{{z['consumer_name']}}" name="conname1" id="conname1" /></td>
+    </tr>
+    <tr>
+      <td><p>Ration card number</p></td>
+      <td><input type="text" value="{{z['ration_no']}}" name="ration1" id="ration1" /></td>
+    </tr>
+    <tr>
+      <td>Consumer email</td>
+      <td><input type="text" value="{{z['email']}}" name="email1" id="email1" /></td>
+    </tr>
+    <tr>
+      <td>Consumer address</td>
+      <td><textarea name="address1" id="address1" cols="45" rows="5">{{z['address']}}</textarea></td>
+    </tr>
+    <tr>
+      <td>Phone number</td>
+      <td><input type="text" value="{{z['phone_no']}}" name="phone1" id="phone1" /></td>
+    </tr>
+    <tr>
+      <td>Consumer photo</td>
+      <td><input type="file" value="{{z['photo']}}" name="photo1" id="photo1" /></td>
+    </tr>
+    <tr>
+      <td>Locality</td>
+      <td><select name="locality1" id="locality1">
+        <option value="ramanattukara">Ramanattukara</option>
+        <option value="feroke">Feroke</option>
+        <option value="cheruvannur">Cheruvannur</option>
+        <option value="mangav">Mangav</option>
+        <option value="beypore">Beypore</option>
+        <option value="mavoor">Mavoor</option>
+
+</select></td>
+    </tr>
+    <tr>
+      <td>Ward</td>
+      <td><select name="ward1" id="ward1">
+        <option value="1">Ward 1</option>
+        <option value="2">Ward 2</option>
+        <option value="3">Ward 3</option>
+        <option value="4">Ward 4</option>
+        <option value="5">Ward 5</option>
+        <option value="6">Ward 6</option>
+        <option value="7">Ward 7</option>
+        <option value="8">Ward 8</option>
+        <option value="9">Ward 9</option>
+        <option value="10">Ward 10</option>
+      </select></td>
+    </tr>
+    <tr>
+      <td><input type="submit" name="button2" id="button2" value="Update" onclick="return valid();" /></td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

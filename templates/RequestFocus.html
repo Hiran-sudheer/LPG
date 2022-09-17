@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+   {% extends "design.html" %}
+
+  {% block body %}
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="758" height="160" border="1" align="center">
+    <tr>
+      <td width="57">Sl.no</td>
+      <td width="113">Consumer Details</td>
+      <td width="99">Consumer Photo</td>
+      <td width="78">Staff Details</td>
+      <td width="88">Request details</td>
+      <td width="85">Locality</td>
+      <td width="54">Ward</td>
+      <td width="73">Status</td>
+    </tr>
+    {% for i in res %}
+    <tr>
+      <td>{{loop.index}}</td>
+      <td>
+        <p>Name : {{i['consumer_name']}}</p>
+        <p>Number : {{i['consumer_no']}}</p>
+        <p>Ration Card : {{i['ration_no']}}</p>
+        <p>Phone Number : {{i['phone_no']}}</p>
+      </td>
+      <td>{{i['photo']}}</td>
+      <td>
+        <p>Name : {{i['staff_name']}}</p>
+        <p>Staff ID : {{i['staff_id']}}</p>
+        <p>Staff Photo : {{i['staff_photo']}}</p>
+        <p>Phone Number : {{i['phone_no']}}</p>
+      </td>
+      <td>
+        <p>Request Date : {{i['consumer_no']}}</p>
+        <p>Request Time : {{i['request_time']}}</p>
+        <p>Assigned Date : {{i['consumer_no']}}</p>
+        <p>Delivery Date : {{i['consumer_no']}}</p>
+      </td>
+      <td> {{i['locality']}}</td>
+      <td> {{i['ward']}}</td>
+      <td>{{i['status']}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

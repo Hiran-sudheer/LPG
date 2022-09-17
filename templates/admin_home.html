@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+  {% extends "design.html" %}
+
+  {% block body %}
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Admin_home.html</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="1112" border="0">
+    <tr>
+      <td><a href="/add_consumer">Add Consumer</a></td>
+      <td><a href="/add_staff">Add Staff</a></td>
+      <td><a href="/view_consumer">View Consumer</a></td>
+      <td><a href="/view_request">View Request</a></td>
+      <td><a href="/view_forwarded_request">View Forwarded request</a></td>
+      <td><a href="/view_staff">View Staff</a></td>
+      <td><a href='/'>Logout</a></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,10 @@
+
+
+
+<select name="ward1" id="ward1">
+        <option value="-1">Select</option>
+        {% for i in res1 %}
+        <option value="{{ i['ward'] }}">{{ i['ward'] }}</option>
+
+        {% endfor %}
+      </select>

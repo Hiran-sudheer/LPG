@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  {% extends "index.html" %}
+
+  {% block body %}
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/login">
+  <table width="328" border="0" align="center">
+    <tr>
+      <td width="164" height="30">Username</td>
+      <td width="148">
+      <input type="text" name="username" id="username" /></td>
+    </tr>
+    <tr>
+      <td height="29">Password</td>
+      <td><input type="password" name="password" id="password" /></td>
+    </tr>
+    <tr>
+      <td height="36"><input type="submit" name="login1" id="login1" value="Submit" /></td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

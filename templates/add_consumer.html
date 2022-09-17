@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+  {% extends "design.html" %}
+
+  {% block body %}
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+
+
+  <script language="javascript" type="text/javascript">
+            var xmlHttp;
+            function shows(mid){
+            <!--alert(mid)-->
+                if (typeof XMLHttpRequest != "undefined"){
+                xmlHttp= new XMLHttpRequest();
+                }
+                else if (window.ActiveXObject){
+                    xmlHttp= new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                if (xmlHttp==null){
+                    alert("Browser does not support XMLHTTP Request")
+                    return;
+                }
+                var url="/viewward/"+mid
+                <!--alert(url)-->
+                <!--url +="?c=" +mid-->
+                xmlHttp.onreadystatechange = stateChange;
+                xmlHttp.open("GET", url, true);
+                xmlHttp.send(null);
+            }
+
+            function stateChange(){
+                if(xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
+                    document.getElementById("war").innerHTML=xmlHttp.responseText
+<!--//                    document.getElementById("x").value=xmlHttp.responseText-->
+                }
+            }
+</script>
+
+<script type="text/javascript">
+  function valid()
+  {
+    if(document.getElementById("connum1").value=="")
+    {
+      alert("Invalid Consumer Number")
+      document.getElementById("connum1").focus;
+      return false;
+    }
+    if(document.getElementById("conname1").value=="")
+	{
+		alert("Enter Name!");
+		document.getElementById("conname1").focus();
+    	return false;
+ 	}
+	if(/[^a-z\s]/gi.test(document.getElementById("conname1").value))
+	{
+		alert("Special characters are not allowed in name");
+		document.getElementById("conname1").focus();
+		return false;
+	}
+	 if(document.getElementById("ration1").value=="")
+    {
+      alert("Invalid Ration Card Number")
+      document.getElementById("ration1").focus;
+      return false;
+    }
+    if(document.getElementById("email1").value=="")
+	{
+		alert("Enter your E-mail ID");
+		document.getElementById("email1").focus();
+		return false;
+	}
+	var emailPat =/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+	var emailid=document.getElementById("email1").value;
+	var matchArray = emailid.match(emailPat);
+	if (matchArray == null)
+	{
+		alert("Your Email ID seems incorrect. Enter Correct Email ID.");
+		document.getElementById("email1").focus();
+		return false;
+	}
+	if(document.getElementById("address1").value=="")
+	{
+		alert("Enter Address!");
+		document.getElementById("address1").focus();
+    	return false;
+ 	}
+ 	if(document.getElementById("phone1").value=="")
+   	{
+     	alert("Enter Phone Number!");
+     	document.getElementById("phone1").focus();
+     	return false;
+ 	}
+	if(/[^0-9]/gi.test(document.getElementById("phone1").value))
+	{
+		alert("Special characters not allowed in Phone Number");
+		document.getElementById("phone1").focus();
+		return false;
+	}
+	if(document.getElementById("photo1").value=="")
+    {
+      alert("Invalid Photo")
+      document.getElementById("photo1").focus;
+      return false;
+    }
+    if(document.getElementById("locality1").value=="-1")
+	{
+		alert("Select Locality!");
+		document.getElementById("locality1").focus();
+    	return false;
+ 	}
+ 	 if(document.getElementById("ward1").value=="-1")
+	{
+		alert("Select Ward!");
+		document.getElementById("ward1").focus();
+    	return false;
+ 	}
+ 	if(document.getElementById("pwd").value=="")
+	{
+		alert("Enter Password!");
+		document.getElementById("pwd").focus();
+    	return false;
+ 	}
+  }
+
+</script>
+
+
+</head>
+
+<body>
+<form action="/consumer" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table width="351" border="0" align="center">
+    <tr>
+      <td width="121">Consumer number</td>
+      <td width="214"><input type="text" name="connum1" id="connum1" /></td>
+    </tr>
+    <tr>
+      <td>Consumer name</td>
+      <td><input type="text" name="conname1" id="conname1" /></td>
+    </tr>
+    <tr>
+      <td><p>Ration card number</p></td>
+      <td><input type="text" name="ration1" id="ration1" /></td>
+    </tr>
+    <tr>
+      <td>Consumer email</td>
+      <td><input type="text" name="email1" id="email1" /></td>
+    </tr>
+    <tr>
+      <td>Consumer address</td>
+      <td><textarea name="address1" id="address1" cols="45" rows="5"></textarea></td>
+    </tr>
+    <tr>
+      <td>Phone number</td>
+      <td><input type="text" name="phone1" id="phone1" /></td>
+    </tr>
+    <tr>
+      <td>Consumer photo</td>
+      <td><input type="file" name="photo1" id="photo1" /></td>
+    </tr>
+    <tr>
+      <td>Locality</td>
+      <td><select name="locality1" id="locality1" onchange="shows(this.value)">
+        <option value="-1">Select</option>
+        {% for i in data %}
+        <option value="{{ i['locality'] }}">{{ i['locality'] }}</option>
+
+        {% endfor %}
+
+</select></td>
+    </tr>
+    <tr>
+      <td>Ward</td>
+      <td> <div id="war">
+        <select name="ward1" id="ward1">
+        <option value="-1">Select</option>
+
+
+      </select>
+      </div>
+      </td>
+    </tr>
+<tr>
+      <td>Password</td>
+      <td><input type="password" name="pwd" id="pwd" minlength="6" /></td>
+    </tr>
+    <tr>
+      <td><input type="submit" name="button2" id="button2" value="Submit" onclick="return valid();" /></td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

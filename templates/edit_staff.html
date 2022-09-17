@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+
+  <script type="text/javascript">
+  function valid()
+  {
+    if(document.getElementById("staffname1").value=="")
+	{
+		alert("Enter Name!");
+		document.getElementById("staffname1").focus();
+    	return false;
+ 	}
+	if(/[^a-z\s]/gi.test(document.getElementById("staffname1").value))
+	{
+		alert("Special characters are not allowed in name");
+		document.getElementById("staffname1").focus();
+		return false;
+	}
+	if(document.getElementById("staffage1").value=="")
+   	{
+     	alert("Enter Age!");
+     	document.getElementById("staffage1").focus();
+     	return false;
+ 	}
+	if(/[^0-9]/gi.test(document.getElementById("staffage1").value))
+	{
+		alert("Special characters not allowed in age");
+		document.getElementById("staffage1").focus();
+		return false;
+	}
+
+	if(document.getElementById("staffaddress1").value=="")
+	{
+		alert("Enter Address!");
+		document.getElementById("staffaddress1").focus();
+    	return false;
+ 	}
+ 	if(document.getElementById("staffphone1").value=="")
+   	{
+     	alert("Enter Phone Number!");
+     	document.getElementById("staffphone1").focus();
+     	return false;
+ 	}
+	if(/[^0-9]/gi.test(document.getElementById("staffphone1").value))
+	{
+		alert("Special characters not allowed in Phone Number");
+		document.getElementById("staffphone1").focus();
+		return false;
+	}
+    if(document.getElementById("staffemail1").value=="")
+	{
+		alert("Enter your E-mail ID");
+		document.getElementById("staffemail1").focus();
+		return false;
+	}
+	var emailPat =/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+	var emailid=document.getElementById("staffemail1").value;
+	var matchArray = emailid.match(emailPat);
+	if (matchArray == null)
+	{
+		alert("Your Email ID seems incorrect. Enter Correct Email ID.");
+		document.getElementById("staffemail1").focus();
+		return false;
+	}
+	if(document.getElementById("staffphoto1").value=="")
+    {
+      alert("Invalid Photo")
+      document.getElementById("staffphoto1").focus;
+      return false;
+    }
+    if(document.getElementById("loc").value=="")
+	{
+		alert("Select Locality!");
+		document.getElementById("loc").focus();
+    	return false;
+ 	}
+ 	 if(document.getElementById("ward").value=="")
+	{
+		alert("Select Ward!");
+		document.getElementById("ward").focus();
+    	return false;
+ 	}
+ 	if(document.getElementById("pwd").value=="")
+	{
+		alert("Enter Password!");
+		document.getElementById("pwd").focus();
+    	return false;
+ 	}
+  }
+
+</script>
+
+</head>
+
+<body>
+<form action="/update_staff" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table width="339" border="0" align="center">
+    <input type="hidden" name="id" value="{{y['staff_id']}}" id="id">
+    <tr>
+      <td width="166">Staff name</td>
+      <td width="157"><input type="text" value="{{y['staff_name']}}" name="staffname1" id="staffname1" /></td>
+    </tr>
+    <tr>
+      <td>Staff age</td>
+      <td><input type="text" value="{{y['staff_age']}}" name="staffage1" id="staffage1" /></td>
+    </tr>
+    <tr>
+      <td>Staff address</td>
+      <td><textarea name="staffaddress1" id="staffaddress1" cols="45" rows="5">{{y['staff_address']}}</textarea></td>
+    </tr>
+    <tr>
+      <td>Phone number</td>
+      <td><input type="text" value="{{y['phone_no']}}" name="staffphone1" id="staffphone1" /></td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td><input type="text" value="{{y['email']}}" name="staffemail1" id="staffemail1" /></td>
+    </tr>
+
+    <tr>
+      <td>Staff photo</td>
+      <td><input type="file" value="{{y['satff_photo']}}" name="staffphoto1" id="staffphoto1" /></td>
+    </tr>
+    <tr>
+      <td>Locality</td>
+      <td><input type="text" value="{{y['locality']}}" name="loc" id="loc"/></td>
+    </tr>
+    <tr>
+      <td>Ward</td>
+      <td><input type="text" value="{{y['ward']}}" name="ward" id="ward"/></td>
+    </tr>
+    <tr>
+      <td><input type="submit" name="button1" id="button1" value="Update" onclick="return valid();" /></td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

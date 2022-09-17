@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+   {% extends "design.html" %}
+
+  {% block body %}
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="785" height="172" border="1" align="center">
+    <tr>
+      <td width="66" height="45"><p>Sl .no</p></td>
+      <td width="66">Consumer number</td>
+      <td width="66">Consumer name</td>
+      <td width="45">Ration card number</td>
+      <td width="66">Consumer email</td>
+      <td width="66">Consumer address</td>
+      <td width="45">Phone number</td>
+      <td width="66">Consumer photo</td>
+      <td width="48">Locality</td>
+      <td width="47">Ward</td>
+      <td width="70">&nbsp;</td>
+    </tr>
+    {% for i in a%}
+    <tr>
+      <td height="67">{{loop.index}}</td>
+      <td>&nbsp;{{i['consumer_no']}}</td>
+      <td> {{i['consumer_name']}}</td>
+      <td>&nbsp;{{i['ration_no']}}</td>
+      <td>&nbsp;{{i['email']}}</td>
+      <td>&nbsp;{{i['address']}}</td>
+      <td>&nbsp;{{i['phone_no']}}</td>
+      <td>&nbsp;{{i['photo']}}</td>
+      <td>{{i['locality']}}</td>
+      <td>{{i['ward']}}</td>
+      <td><p><a href="/edit_consumer/{{i['consumer_id']}}">EDIT</a></p>
+      <p><a href="/delete_consumer/{{i['consumer_id']}}">DELETE</a></p></td>
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

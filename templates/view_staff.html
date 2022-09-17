@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+   {% extends "design.html" %}
+
+  {% block body %}
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="833" height="164" border="1" align="center">
+    <tr>
+      <td width="40" height="72">Sl.no</td>
+      <td width="40">Staff name</td>
+      <td width="40">Staff age</td>
+      <td width="40">Staff address</td>
+      <td width="40">Phone number</td>
+      <td width="40">Email</td>
+      <td width="40">Staff photo</td>
+      <td width="42">Locality</td>
+      <td width="36">Ward</td>
+      <td width="36">&nbsp;</td>
+    </tr>
+       {% for i in b%}
+    <tr>
+      <td height="69">{{loop.index}}</td>
+      <td>&nbsp;{{i['staff_name']}}</td>
+      <td>&nbsp;{{i['staff_age']}}</td>
+      <td> {{i['staff_address']}}</td>
+      <td>&nbsp;{{i['phone_no']}}</td>
+      <td> {{i['email']}}</td>
+      <td>&nbsp;{{i['staff_photo']}}</td>
+      <td>&nbsp;{{i['locality']}}</td>
+      <td>&nbsp;{{i['ward']}}</td>
+      <td><p><a href="/edit_staff/{{i['staff_id']}}">EDIT</a></p>
+      <p><a href="/delete_staff/{{i['staff_id']}}">DELETE</a></p></td>
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}
